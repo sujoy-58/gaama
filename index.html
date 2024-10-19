@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <img src="images/logo.png" alt="">
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Contact</a></li>
+
+            </ul>
+        </div>
+        <div class="content">
+            <div class="left-col">
+                <h1>THE <br>REAL <br>SOUND</h1>
+            </div>
+            <div class="right-col">
+                <p>Click Here To Listen</p>
+                <img src="images/play.png" id="icon">
+            </div>
+        </div>
+    </div>
+    <audio id="mysong">
+        <source id="songsource" src="songs/Ding Dang.mp3" type="audio/mp3">
+    </audio>
+    <script>
+        var mysong = document.getElementById("mysong");
+        var icon = document.getElementById("icon");
+        var songsource = document.getElementById("songsource");
+
+        var songstoplay = [
+            "songs/Ding Dang.mp3",
+            "songs/song1.mp3",
+            "songs/song2.mp3",
+            "songs/song3.mp3",
+            "songs/song4.mp3"
+        ];
+        icon.onclick = function () {
+            if (mysong.paused) {
+                var randomIndex = Math.floor(Math.random() * songstoplay.length);
+                songsource.src = songstoplay[randomIndex];
+
+                mysong.load();
+                mysong.play();
+
+                mysong.play();
+                icon.src = "images/pause.png";
+            }
+            else {
+                mysong.pause();
+                icon.src = "images/play.png";
+            }
+        }
+    </script>
+</body>
+
+</html>
